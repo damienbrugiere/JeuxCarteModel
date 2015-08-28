@@ -16,8 +16,8 @@ public class Monstre extends Carte {
     private Integer attaque;
     private Integer defense;
 
-    public Monstre(Integer attaque, Integer defense, List<Evenement> evenements,Evenement evenementEnCours) {
-        super(evenements,evenementEnCours);
+    public Monstre(Integer attaque, Integer defense, Automate automate) {
+        super(automate);
         if (attaque == null || defense == null) {
             throw new IllegalArgumentException("L'attaque ou la défense d'un monstre ne peut pas être null");
         }
@@ -25,18 +25,19 @@ public class Monstre extends Carte {
         this.defense = defense;
     }
 
+    @Override
     public void attaque(Monstre monstreAdverse) {
-        if (monstreAdverse == null || monstreAdverse.getDefense() <= 0) {
-            throw new IllegalArgumentException("Monstre null ou avec 0 pv");
-        }
+        super.attaque(monstreAdverse);
         monstreAdverse.prendDesDegats(attaque);
     }
 
     public void prendDesDegats(Integer attaque) {
-        this.defense -= attaque;
+        if(!bloquer(this)){
+            this.defense -= attaque;
+        }
     }
-
-    public void detruction() {
+    
+    public void detruit() {
         this.defense = 0;
     }
 
@@ -55,4 +56,32 @@ public class Monstre extends Carte {
     public Integer getDefense() {
         return defense;
     }
+
+    @Override
+    public boolean bloquer(Monstre monstre) {
+        return super.getAutomate().bloquer(monstre);
+    }
+
+    
+
+    @Override
+    public void defendre(Monstre monstre) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void booster(Monstre monstre) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void soigner(Monstre monstre) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mort(Monstre monstre) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
