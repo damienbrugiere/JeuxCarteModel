@@ -9,6 +9,12 @@ package com.richardbrugiere.jeuxcartemodel.carte;
  *
  * @author damien
  */
-public abstract class Evenement {
-    
+public interface Evenement {
+    void attaque(Monstre monstre);
+    boolean bloquer(Monstre monstre);
+    void booster(Monstre monstre);
+    void soigner(Monstre monstre);
+    void destruction(Monstre monstre);
+    void mort(Monstre monstre);
+    void defendre(Monstre monstre);
 }

@@ -3,20 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.richardbrugiere.jeuxcartemodel.carte.EvenementImpl;
+package com.richardbrugiere.jeuxcartemodel.carte.EffetImpl;
 
 import com.richardbrugiere.jeuxcartemodel.carte.Effet;
-import com.richardbrugiere.jeuxcartemodel.carte.Position;
-import java.util.List;
+import com.richardbrugiere.jeuxcartemodel.carte.Monstre;
 
 /**
  *
  * @author damien
  */
-public class DansDeck extends Position {
+public class Blocage extends Effet {
 
-    public DansDeck(List<Effet> effets) {
-        super(effets);
+    @Override
+    public boolean bloquer(Monstre monstre) {
+        return true;
     }
 
+    
+    
 }

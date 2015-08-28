@@ -5,12 +5,17 @@
  */
 package com.richardbrugiere.jeuxcartemodel.carte.EvenementImpl;
 
-import com.richardbrugiere.jeuxcartemodel.carte.Evenement;
+import com.richardbrugiere.jeuxcartemodel.carte.Effet;
+import com.richardbrugiere.jeuxcartemodel.carte.Position;
+import java.util.List;
 
 /**
  *
  * @author damien
  */
-public class EnMain extends Evenement{
-    
+public class EnMain extends Position{
+
+    public EnMain(List<Effet> effets) {
+        super(effets);
+    }
 }
